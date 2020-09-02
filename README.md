@@ -32,3 +32,11 @@ Web Socket Channel library is a flutter library that helps in creating a websock
 
 ### Flutter Local Notifications
 Flutter Local Notification is a flutter library that helps in making push notifications available to a flutter app.When a message is recieved from the server, it notifies by displaying a push notification with vibration and sound.The push notification is available even when the app is in background.
+
+## Libraries used in Django
+
+* [Django Channels](https://channels.readthedocs.io/en/latest/)
+
+### Django Channels
+
+Django channels is a python library for Django which extends Django's capability and adds an asynchronous channel layer, which helps in 2 way communication.
