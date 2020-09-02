@@ -10,7 +10,6 @@ Flutter app that implements Push Notifications with Django Channels using websoc
 * Django==3.0.7
 * channels==2.4.0
 * channels-redis==2.4.2
-* djangorestframework==3.11.0
 * Install Redis
 * Run ``ifconfig`` and obtain IP_ADDRESS
 * Run ``python3 manage.py runserver [IP_ADDRESS]:8000``
