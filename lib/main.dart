@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.purple,
@@ -78,30 +79,37 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Container(
         height: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            TextFormField(
-              controller: _message,
-              autofocus: false,
-              decoration: InputDecoration(
-                hintText: 'Type your Message',
-                errorText: _iserror ? 'Textfield is empty!' : null,
-                contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                border: OutlineInputBorder(),
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              TextField(
+                controller: _message,
+                autofocus: false,
+                decoration: InputDecoration(
+                  hintText: 'Type your Message',
+                  errorText: _iserror ? 'Textfield is empty!' : null,
+                  contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            IconButton(
-                icon: Icon(Icons.send),
-                onPressed: () {
-                  setState(() {
-                    _message.text.isEmpty ? _iserror = true : _iserror = false;
-                  });
-                  if (!_iserror)
-                    channel.sink.add(jsonEncode({'message': _message.text}));
-                })
-          ],
+              IconButton(
+                  icon: Icon(Icons.send),
+                  onPressed: () {
+                    setState(() {
+                      _message.text.isEmpty
+                          ? _iserror = true
+                          : _iserror = false;
+                    });
+                    if (!_iserror) {
+                      channel.sink.add(jsonEncode({'message': _message.text}));
+                      _message.text = '';
+                    }
+                  })
+            ],
+          ),
         ),
       ),
     );
